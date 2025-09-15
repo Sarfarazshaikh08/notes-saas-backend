@@ -5,6 +5,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import noteRoutes from "./routes/notes.js";
 import tenantRoutes from "./routes/tenants.js";
+import testRoutes from './routes/test.js';
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,7 @@ app.get("/health", (req, res) => res.json({ status: "ok" }));
 app.use("/auth", authRoutes);
 app.use("/notes", noteRoutes);
 app.use("/tenants", tenantRoutes);
+app.use('/test', testRoutes);
 
 const PORT = process.env.PORT || 3000;
 
@@ -38,4 +40,5 @@ if (process.env.VERCEL !== "1") {
 }
 
 // Always export app for Vercel
+
 export default app;
